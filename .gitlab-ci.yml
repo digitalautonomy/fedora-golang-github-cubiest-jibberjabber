@@ -11,10 +11,10 @@ build:
     - tar zcf jibberjabber-2.0.tar.gz jibberjabber-2.0
     - mkdir f30 f31
     - fedpkg --release f30 local
-    - find . -name *rpm -exec mv {} f30 \;
+    - 'find . -name "*rpm" -exec mv {} f30 \;'
     - ls
     - fedpkg --release f31 local
-    - find . -name *rpm -exec mv {} f31 \;
+    - 'find . -name "*rpm" -exec mv {} f31 \;'
   artifacts:
     paths:
       - 'f30/*.rpm'
