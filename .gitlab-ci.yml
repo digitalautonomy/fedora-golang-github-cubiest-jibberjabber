@@ -12,6 +12,7 @@ build:
     - mkdir f30 f31
     - fedpkg --release f30 local
     - find . -name *rpm -exec mv {} f30 \;
+    - ls
     - fedpkg --release f31 local
     - find . -name *rpm -exec mv {} f31 \;
   artifacts:
