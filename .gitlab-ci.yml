@@ -1,0 +1,20 @@
+build:
+  stage: build
+  image: rbonifaz/wahay-rpm-build:latest
+  #before_script:
+  script:
+    - git clone https://github.com/cubiest/jibberjabber.git
+    - cd jibberjabber/
+    - git checkout tags/v2.0
+    - cd ..
+    - mv jibberjabber/ jibberjabber-2.0
+    - tar zcf jibberjabber-2.0.tar.gz jibberjabber-2.0
+    - mkdir f30 f31
+    - fedpkg --release f30 local
+    - find . -name *rpm -exec mv {} f30 \;
+    - fedpkg --release f31 local
+    - find . -name *rpm -exec mv {} f31 \;
+  artifacts:
+    paths:
+      - 'f30/*.rpm'
+      - 'f31/*.rpm'
