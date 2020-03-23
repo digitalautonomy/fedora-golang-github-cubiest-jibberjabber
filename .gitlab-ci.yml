@@ -1,7 +1,12 @@
 build:
   stage: build
   image: rbonifaz/wahay-rpm-build:latest
-  #before_script:
+  before_script:
+    - "eval $(ssh-agent -s)"
+    - 'ssh-add <(echo "$FEDORA_PACKAGING_PRIVATE_KEY")'
+    - mkdir -p ~/.ssh; chmod 700 ~/.ssh
+    - 'echo -e "[fedora.autonomia.digital]:4242,[185.108.78.22]:4242 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIx8qF3puSAM1UAxc3ODJTNGrgwf8mET664pPfP/ZQgiMxTIKG8Ar8h1xxP52AyQoqTLpCWOPaBkUya2Q0+SZTg=
+
   script:
     - git clone https://github.com/cubiest/jibberjabber.git
     - cd jibberjabber/
@@ -14,6 +19,10 @@ build:
     - 'find . -name "*fc30*.rpm" -exec cp {} f30/ \;'
     - fedpkg --release f31 local
     - 'find . -name "*fc31*.rpm" -exec mv {} f31/ \;'
+    - 'scp -r -P4242 f30/* fedora-repo@fedora.autonomia.digital:packages/upload/f30'
+    - 'scp -r -P4242 f31/* fedora-repo@fedora.autonomia.digital:packages/upload/f31'
+
+
   artifacts:
     paths:
       - 'f30/*.rpm'
