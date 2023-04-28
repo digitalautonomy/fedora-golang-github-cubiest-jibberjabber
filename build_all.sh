@@ -7,8 +7,8 @@ build_for_release() {
 
     echo "Building for $release ..."
     fedpkg --release $release local
-    scp -r -P4243 *.rpm fedora-repo@fedora.autonomia.digital:packages/upload/$release
-    rm -rf *.rpm
+    scp -r -P4243 *.rpm noarch/*.rpm fedora-repo@fedora.autonomia.digital:packages/upload/$release
+    rm -rf *.rpm noarch
     echo "Done build for $release!"
 }
 
