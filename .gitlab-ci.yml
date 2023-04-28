@@ -33,6 +33,7 @@ build:
     - 'find . -name "*fc37*.rpm" -exec mv {} f37/ \;'
     - fedpkg --release f38 local
     - 'find . -name "*fc38*.rpm" -exec mv {} f38/ \;'
+    - 'ssh -p 4243 fedora-repo@fedora.autonomia.digital "mkdir -p packages/upload/f3{0,1,2,3,4,5,6,7,8}"'
     - 'scp -r -P4243 f30/* fedora-repo@fedora.autonomia.digital:packages/upload/f30'
     - 'scp -r -P4243 f31/* fedora-repo@fedora.autonomia.digital:packages/upload/f31'
     - 'scp -r -P4243 f32/* fedora-repo@fedora.autonomia.digital:packages/upload/f32'
