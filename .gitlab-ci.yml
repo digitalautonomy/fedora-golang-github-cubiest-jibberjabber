@@ -14,35 +14,7 @@ build:
     - git checkout tags/v2.1
     - cd ..
     - tar zcf jibberjabber-2.1.tar.gz jibberjabber-2.1
-    - mkdir f30 f31 f32 f33 f34 f35 f36 f37 f38
-    - fedpkg --release f30 local
-    - 'find . -name "*fc30*.rpm" -exec cp {} f30/ \;'
-    - fedpkg --release f31 local
-    - 'find . -name "*fc31*.rpm" -exec mv {} f31/ \;'
-    - fedpkg --release f32 local
-    - 'find . -name "*fc32*.rpm" -exec mv {} f32/ \;'
-    - fedpkg --release f33 local
-    - 'find . -name "*fc33*.rpm" -exec mv {} f33/ \;'
-    - fedpkg --release f34 local
-    - 'find . -name "*fc34*.rpm" -exec mv {} f34/ \;'
-    - fedpkg --release f35 local
-    - 'find . -name "*fc35*.rpm" -exec mv {} f35/ \;'
-    - fedpkg --release f36 local
-    - 'find . -name "*fc36*.rpm" -exec mv {} f36/ \;'
-    - fedpkg --release f37 local
-    - 'find . -name "*fc37*.rpm" -exec mv {} f37/ \;'
-    - fedpkg --release f38 local
-    - 'find . -name "*fc38*.rpm" -exec mv {} f38/ \;'
-    - 'ssh -p 4243 fedora-repo@fedora.autonomia.digital "mkdir -p packages/upload/f3{0,1,2,3,4,5,6,7,8}"'
-    - 'scp -r -P4243 f30/* fedora-repo@fedora.autonomia.digital:packages/upload/f30'
-    - 'scp -r -P4243 f31/* fedora-repo@fedora.autonomia.digital:packages/upload/f31'
-    - 'scp -r -P4243 f32/* fedora-repo@fedora.autonomia.digital:packages/upload/f32'
-    - 'scp -r -P4243 f33/* fedora-repo@fedora.autonomia.digital:packages/upload/f33'
-    - 'scp -r -P4243 f34/* fedora-repo@fedora.autonomia.digital:packages/upload/f34'
-    - 'scp -r -P4243 f35/* fedora-repo@fedora.autonomia.digital:packages/upload/f35'
-    - 'scp -r -P4243 f36/* fedora-repo@fedora.autonomia.digital:packages/upload/f36'
-    - 'scp -r -P4243 f37/* fedora-repo@fedora.autonomia.digital:packages/upload/f37'
-    - 'scp -r -P4243 f38/* fedora-repo@fedora.autonomia.digital:packages/upload/f38'
+    - ./build_all.sh f30 f31 f32 f33 f34 f35 f36 f37 f38
 
   artifacts:
     paths:
