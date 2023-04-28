@@ -3,7 +3,7 @@
 
 # https://github.com/cubiest/jibberjabber
 %global goipath         github.com/cubiest/jibberjabber
-Version:                2.0
+Version:                2.1
 
 %gometa
 
@@ -43,6 +43,9 @@ BuildRequires:  golang(golang.org/x/text/language)
 %gopkgfiles
 
 %changelog
+* Fri Apr 28 14:00:00 -05 2023 CAD <fedora@autonomia.digital> - 2.1-1
+- Update version of JibberJabber and package for more Fedora versions
+
 * Mon Mar 16 11:10:04 -05 2020 rafael <rafael@autonomia.digital> - 2.0-1
 - Initial package
 
